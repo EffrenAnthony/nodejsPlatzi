@@ -85,3 +85,17 @@ para facilitar peticiones desde el body
 ## Servir archivos estáticos
 
 ## Errores: Cómo presentarlos e implicaciones en la seguridad
+
+## Conceptualmente: Rutas, controladores y bases de datos
+
+## Rutas y capa de red: Responsabilidades y límites
+
+## Controladores: Definiendo la lógica de negocio
+
+## Almacenando la información en una base de datos
+
+## Tipos de Bases de Datos: Relacionales y No Relacionales
+Bases de Datos Relacionales: no es una base de datos muy flexible, pero tiene a favor su gran soporte y el enorme desarrollo en herramientas para su uso. Si necesitamos cambiar un valor de un campo debemos hacerlo con todos los campos de nuestra BD, en cambio con NoSQL o No Relacional no es así.
+
+Bases de Datos No Relacionales: son de bases de datos sin una tabla fija como las que sí se encuentran en las bases de datos relacionales, lo que permite una alta escalabilidad en ellas. Además, es abierta y por lo tanto flexible a diferentes tipos de datos y no necesita tantos recursos para ejecutarse; de hecho, el hardware necesario no cuesta mucho.
+

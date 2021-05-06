@@ -99,3 +99,8 @@ Bases de Datos Relacionales: no es una base de datos muy flexible, pero tiene a 
 
 Bases de Datos No Relacionales: son de bases de datos sin una tabla fija como las que sí se encuentran en las bases de datos relacionales, lo que permite una alta escalabilidad en ellas. Además, es abierta y por lo tanto flexible a diferentes tipos de datos y no necesita tantos recursos para ejecutarse; de hecho, el hardware necesario no cuesta mucho.
 
+## MongoDB: Almacenar y leer datos
+
+En esta clase vamos a utilizar mongoose para crear los esquemas de nuestra base de datos. También utilizaremos mLab como nuestra base de datos.
+
+## MongoDB: Actualizar datos

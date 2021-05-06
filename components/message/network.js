@@ -11,38 +11,25 @@ router.get('/', function(req, res){
   .catch((error) => {
     response.error(req, res, error, 'Unexpected Error', 500)
   })
-
-  // console.log(req.headers)
-  // res.header({
-  //   "custom-header":"Nuestro valor personalizado"
-  // })
-  // // res.send('Lista de mensaje')
-  // response.success(req, res, "Lista de mensajes")
 })
+
 router.post('/', function(req, res){
-  // console.log(req.query)
-  // console.log(req.body)
   controller.addMessage(req.body.user, req.body.message)
     .then((fullMessage)=>{
       response.success(req, res, fullMessage, 201)
     })
-    .catch(()=>{
-      response.error(req, res, 'Información invalida', 400, 'Error en el controlador')
+    .catch((e)=>{
+      response.error(req, res, 'Información invalida', 400, '[Error en el controlador]' + e)
     })
-  // if (req.query.error == "ok") {
-  //   response.error(req, res, 'Error simulado', 500, 'Es solo una simulación de los errores')
-    
-  // } else {
-  //   response.success(req, res, 'Creado correctamente', 201)
-  // }
-  // res.status(201).send('mensaje "' + req.body.text +'" añadido correctamente')
-  // res.status(201).send([{
-  //   error: '',
-  //   body: 'creado correctamente'
-  // }])
 })
-// app.use('/', function(req, res){
-//   res.send('Hola')
-// })
 
+router.patch('/:id', function(req, res){
+  controller.updateMessage(req.params.id, req.body.message)
+  .then((data)=>{
+    response.success(req, res, data, 200)
+  })
+  .catch((e)=>{
+    response.error(req, res, 'Error interno', 500, e)
+  })
+})
 module.exports = router

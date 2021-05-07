@@ -3,14 +3,16 @@ const multer = require('multer')
 const router = express.Router()
 const response = require('../../network/response')
 const controller = require('./controller')
+const { config } = require('../../config')
 
 const upload = multer({
   // dest: 'uploads/'
-  dest: 'public/files/'
+  dest: 'public' + config.filesRoute + '/'
 })
 
 router.get('/', function(req, res){
   // para filtrar mensajes por usuario
+  console.log(req.headers.authorization)
   const filteredMessages = req.query.chat || null
   controller.getMessages(filteredMessages)
   .then((messageList) => {

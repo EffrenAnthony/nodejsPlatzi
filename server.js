@@ -10,7 +10,7 @@ const router = require('./network/routes')
 // DB CONFIG
 const db = require('./db')
 const { config }= require('./config/index')
-db(`mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}?retryWrites=true&w=majority`)
+db(config.mongodb)
 // const router = require('./components/message/network')
 
 app.use(cors())
@@ -24,7 +24,9 @@ socket.connect(server)
 router(app)
 
 
-app.use('/app', express.static('public'))
-const port = 3000
-server.listen(port)
-console.log(`Listening on http://localhost:${port}`);
+app.use(config.publicRoute, express.static('public'))
+const port = config.port
+server.listen(port, () => {
+  console.log(`Listening on ${config.host}:${config.port}`);
+})
+

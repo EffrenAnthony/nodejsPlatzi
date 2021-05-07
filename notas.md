@@ -104,3 +104,28 @@ Bases de Datos No Relacionales: son de bases de datos sin una tabla fija como la
 En esta clase vamos a utilizar mongoose para crear los esquemas de nuestra base de datos. También utilizaremos mLab como nuestra base de datos.
 
 ## MongoDB: Actualizar datos
+
+## MongoDB: Consultar datos
+
+## MongoDB: Eliminar Datos
+
+## Gestionar conexiones a la base de datos desde la API
+En esta clase vamos a refactorizar nuestro código para tener todo organizado de una mejor manera, crearemos un archivo db.js donde tendremos todos los datos de nuestra conexión a la base de datos.
+
+## Escalando la arquitectura: Múltiples entidades
+
+## Relacionando nuestras entidades
+En esta clase vamos a relacionar la entidad de usuarios con la entidad de mensajes y a su vez crearemos una entidad chat que relacionará estas dos entidades.
+
+## Guardar el fichero en el servidor
+
+## WebSockets: Qué son, por qué son interesantes y cómo usarlos
+
+El protocolo Websocket o wss:// crea un túnel de información entre el usuario y el servidor el cual se quedará abierto hasta que el servidor y/o el cliente cierre la conexión para pedir información en tiempo real.
+
+## Manejo de Websockets con NodeJS
+
+## Conectar la API al servidor de WebSockets
+
+## Revisión y próximos pasos
+

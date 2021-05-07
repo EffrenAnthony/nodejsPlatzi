@@ -1,13 +1,13 @@
-const db = require('mongoose')
+// const db = require('mongoose')
 const Model = require('./model')
-const { config }= require('../../config/index')
+// const { config }= require('../../config/index')
 
-db.Promise = global.Promise
-db.connect(`mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}?retryWrites=true&w=majority`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
-}).then(() => console.log('contected to DB'))
+// db.Promise = global.Promise
+// db.connect(`mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}?retryWrites=true&w=majority`, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false
+// }).then(() => console.log('[db] Contected to DB'))
 // const list = []
 
 function addMessage(message) {
@@ -15,11 +15,25 @@ function addMessage(message) {
   const myMessage = new Model(message)
   myMessage.save()
 }
-
-async function getMessage() {
+// ? se cambió filtro de usuario a filtro de chat para tener todos los mensajes de un chat en vez de un usuario
+function getMessage(filterUser) {
   // return list
-  const messages = await Model.find()
-  return messages
+  return new Promise((resolve, reject) => {
+    let filter = {}
+    if (filterUser !== null) {
+      // filter = { user: filterUser}
+      filter = { chat: filterUser}
+    }
+    Model.find(filter)
+    .populate('user')
+    .exec((error, populated) => {
+      if (error) {
+        reject(error)
+        return false
+      }
+      resolve(populated)
+    })
+  })
 }
 
 async function updateText(id, message) {
@@ -32,10 +46,17 @@ async function updateText(id, message) {
   return newMessage
 }
 
+function removeMessage(id) {
+  return Model.deleteOne({
+    _id: id
+  })
+}
+
 module.exports = {
   add: addMessage,
   list: getMessage,
-  updateText: updateText
+  updateText: updateText,
+  remove: removeMessage
   // get
   // update
   // delete
